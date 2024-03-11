@@ -75,20 +75,19 @@
 
 # Homework-3:
 # Get an input string from the user. Add a space at every 3rd char.
-# Input: abcdefg
+# Input: abcdefwg
 # Output: ab cd ef g 
 
 str = "abcdefg"
-res=[]
-res[:] = str
-print(res)
-for char in res:
-    print(res.index(char))
-    if res.index(char) % 3 == 0:
-        res.append([])
-        
-        
-print(str)
+newStr = ""
+
+for i in range(0, len(str), 2):  # 0 2 4 6
+    newStr += str[i:i+2]
+    if i + 2 < len(str): # 2 < 7 | 4 < 7 | 6 < 7
+        newStr += " "
+
+print(newStr)
+
     
 
 
