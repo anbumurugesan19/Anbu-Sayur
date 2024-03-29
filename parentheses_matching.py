@@ -2,24 +2,27 @@
 #output: balanced
 #input: a)()
 #output: unbalanced
-open = ["("]
-close = [")"]
+open = ["(","[","{"]
+close = [")","]","}"]
 def isBalance(str):
-    stack = []
+    stack = [] # {[()]}
     for char in str:
         if char in open:
             stack.append(char)
         elif char in close:
-            if len(stack) == 0:
+            position = close.index(char)
+            if (len(stack) > 0) and (open[position] == stack[len(stack)-1]):
+                stack.pop()
+            else:
                 return stack
-            stack.pop()
     return stack
        
 str = input()
-if isBalance(str):
-    print("Unbalanced")
-else:
+res = isBalance(str)
+if len(res) == 0:
     print("Balanced")
+else:
+     print("UnBalanced")
 
 
 
